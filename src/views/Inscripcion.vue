@@ -23,7 +23,7 @@
               ></b-form-input>
             </b-form-group>
 
-          <p class="text-muted mt-3">Recuerda que son pueden participar un numero limitado de equipos</p>
+          <p class="text-muted mt-3">Recuerda que solo pueden participar un numero limitado de equipos</p>
             <b-btn type="submit" variant="primary">Crear</b-btn>
           </b-form>
         </b-card-text>

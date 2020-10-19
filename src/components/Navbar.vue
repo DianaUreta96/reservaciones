@@ -8,11 +8,14 @@
       <b-navbar-nav class="mt-1">
          
         <b-nav-item to="/" >Inicio</b-nav-item>
+        <!-- <b-nav-item to="invitado" >Invitado</b-nav-item> -->
+
       </b-navbar-nav>
 
 
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">
+        <b-button to="/invitado" size="sm" class="my-2 my-sm-0" variant="success" type="button">Invitado</b-button>
         <b-button v-if="!isLoggedIn" to="/login" size="sm" class="my-2 my-sm-0" variant="success" type="button">login</b-button>
         <b-button v-if="!isLoggedIn" to="/signin" size="sm" class="my-2 my-sm-0 ml-2"  variant="warning" type="button">sign-In</b-button>
 

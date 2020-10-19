@@ -4,7 +4,7 @@
      <h1 class="mt-5 text-white">
        Bienvenido a Cancha Sintética El Molino
      </h1>
-     <b-button class="mt-5 mx-4 text-white" variant="outline-light">Sobre Nosotros</b-button>
+     <!-- <b-button class="mt-5 mx-4 text-white" variant="outline-light">Sobre Nosotros</b-button> -->
      <b-button to="/reservacion" class="mt-5 mx-4 text-white" variant="outline-light">Realizar Reservación</b-button>
      <b-button to="/campeonatos" class="mt-5 mx-4 text-white" variant="outline-light">Crear Campeonatos</b-button>
     </b-col>
