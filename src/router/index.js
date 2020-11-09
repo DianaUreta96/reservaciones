@@ -79,15 +79,15 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/ClienteReservacion.vue"),
   },
-  {
-    path: "/inscripcion-campeonato",
-    name: "Inscripcion",
-    meta:{
-      requiresGuest:true
-    },
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Inscripcion.vue"),
-  },
+  // {
+  //   path: "/inscripcion-campeonato",
+  //   name: "Inscripcion",
+  //   meta:{
+  //     requiresGuest:true
+  //   },
+  //   component: () =>
+  //     import(/* webpackChunkName: "about" */ "../views/Inscripcion.vue"),
+  // },
   {
     path: "/sobre-nosotros",
     name: "SobreNosotros",

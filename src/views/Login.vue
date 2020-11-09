@@ -49,6 +49,7 @@
 </template>
 
 <script>
+// Paquete
 import firebase from 'firebase';
 
 export default {

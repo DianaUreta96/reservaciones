@@ -1,5 +1,5 @@
 <template>
-  <b-row class="justify-content-center">
+  <b-row class="">
     <b-col md="6">
       <h1 class="mt-5 text-white">Realizar Reservación</h1>
       <b-card>
@@ -70,16 +70,33 @@
         </b-card-text>
       </b-card>
     </b-col>
-
+    <b-col>
+      <h1 class="mt-5 text-white">Horas ocupadas</h1>
+      <b-card>
+        <b-card-text>
+          <b-form-select
+            v-model="selected"
+            :options="options"
+            @change="updateRes()"
+          ></b-form-select>
+          <h6 class="my-2">horas ocupadas</h6>
+          <ul>
+          <li v-for="(item,index) in fechaF" :key="index">
+              {{item}}
+          </li>
+          </ul>
+        </b-card-text>
+      </b-card>
+    </b-col>
   </b-row>
 </template>
 
 
 <script>
-import db from "../firebaseInit"
+import db from "../firebaseInit";
 export default {
-    name:"ClienteReservacion",
-    data() {
+  name: "ClienteReservacion",
+  data() {
     return {
       form: {
         name: "",
@@ -88,10 +105,17 @@ export default {
         fecha: "",
         hora: "",
       },
-      }
-    },
-    methods:{
-        crear() {
+      selected: null,
+      options: [{ value: null, text: "Ver fecha no disponibles" }],
+      dataRes: [],
+      fechaF: [],
+    };
+  },
+  mounted() {
+    this.getData();
+  },
+  methods: {
+    crear() {
       if (this.form.fecha !== "" && this.form.hora !== "") {
         var that = this;
         db.collection("Reservaciones")
@@ -104,6 +128,7 @@ export default {
           })
           .then(function (docRef) {
             that.limpiar();
+            that.updateRes();
             console.log("Document written with ID: ", docRef.id);
           })
           .catch(function (error) {
@@ -111,18 +136,54 @@ export default {
           });
       }
     },
-     limpiar() {
-      this.form.name = "",
-        this.form.apellido = "",
-        this.form.telefono = "",
-        this.form.fecha = "",
-        this.form.hora = "";
-    },
-    }
+    getData() {
+      db.collection("Reservaciones")
+        .get()
+        .then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            this.dataRes.push(doc.data().fecha);
+          });
 
-}
+          this.limpiarDataR();
+        });
+    },
+    limpiarDataR() {
+      let unicos = Array.from(new Set(this.dataRes));
+
+      unicos.forEach((item) => {
+        let temp = {
+          value: item,
+          text: item,
+        };
+        this.options.push(temp);
+      });
+
+      // this.fechaF = result;
+    },
+    updateRes() {
+      this.fechaF = [];
+     var that = this;
+      let museums = db
+        .collection("Reservaciones")
+        .where("fecha", "==", that.selected);
+      museums.get().then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc) {
+          that.fechaF.push(doc.data().hora);
+          // console.log(doc.id, " => ", doc.data());
+        });
+      });
+    },
+
+    limpiar() {
+      (this.form.name = ""),
+        (this.form.apellido = ""),
+        (this.form.telefono = ""),
+        (this.form.fecha = ""),
+        (this.form.hora = "");
+    },
+  },
+};
 </script>
 
 <style>
-
 </style>

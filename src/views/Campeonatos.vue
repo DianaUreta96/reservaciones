@@ -81,6 +81,7 @@ export default {
           nombre: that.name,
           participantes: that.quantity,
         })
+        // Limpia el formulario
         .then(function (docRef) {
           that.name = "";
           that.quantity = "";
@@ -103,7 +104,7 @@ export default {
               id: doc.id,
             };
             this.items.push(datos);
-            console.log(`${doc.id} => ${doc.data()}`);
+            // console.log(`${doc.id} => ${doc.data()}`);
           });
         });
     },

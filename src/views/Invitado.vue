@@ -6,7 +6,7 @@
      </h1>
      <b-button to="/sobre-nosotros" class="mt-5 mx-4 text-white" variant="outline-light">Sobre Nosotros</b-button>
      <b-button to="/cliente-reservacion" class="mt-5 mx-4 text-white" variant="outline-light">Realizar Reservación</b-button>
-     <b-button to="/inscripcion-campeonato" class="mt-5 mx-4 text-white" variant="outline-light">Inscribirse a Capeonato</b-button>
+     <b-button to="/inscripcion" class="mt-5 mx-4 text-white" variant="outline-light">Inscribirse a Campeonato</b-button>
     </b-col>
   </b-row>
 </template>
